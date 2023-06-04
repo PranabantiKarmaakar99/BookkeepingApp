@@ -17,7 +17,7 @@ const Accountadd = () => {
     <div className=' h-full w-full flex-col items-center justify-center mb-20 '>
     <Navbar />
     <form
-    action="/components/Paymentdetailsconfirm" target="_blank" method="POST"
+    action="/components/Paymentdetailssummary" target="_blank" method="POST"
     
     className='p-10'>
   <div class="space-y-12">

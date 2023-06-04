@@ -32,18 +32,42 @@ function Table({ columns, data }) {
           return (
             <tr {...row.getRowProps()}  className='border-2 ' >
               {row.cells.map(cell => {
-                     if (cell.column.id === 'Edit') {
+                     if (cell.column.id === 'Approval') {
                         // Render a link for the "Edit" column
                         return (
                           <td
                             {...cell.getCellProps()}
                             className="border p-2 text-gray-900"
                           >
-                            <Link href="/components/Accountadd" target="_blank" rel="noopener noreferrer">
-                              Edit
+                            <div >
+       
+        <div className="mt-2">
+          <select id="project" name="project" autocomplete="project-name" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+            <option>Approve</option>
+            <option>Reject</option>
+       
+          </select>
+        
+        </div>
+        </div>
+
+                          </td>
+                        );
+                      }
+
+                      else if (cell.column.id === 'Details') {
+
+                        return (
+                          <td
+                            {...cell.getCellProps()}
+                            className="border p-2 text-gray-900 font-semibold"
+                          >
+                            <Link href="/components/Paymentdetailssummary" target="_blank" rel="noopener noreferrer">
+                              Details
                             </Link>
                           </td>
                         );
+
                       }
 
                 return <td {...cell.getCellProps()} className='border-2 '>{cell.render('Cell')}</td>;
@@ -56,7 +80,7 @@ function Table({ columns, data }) {
   );
 }
 
-const Paymentdetailssummary = () => {
+const PaymentApproval = () => {
   const columns = React.useMemo(
     () => [
       {
@@ -67,25 +91,20 @@ const Paymentdetailssummary = () => {
         Header: 'Projects',
         accessor: 'Projects',
       },
-      {
-        Header: 'Category',
-        accessor: 'Category',
-      },
-      {
-        Header: 'Description',
-        accessor: 'Description',
-      },
+   
+   
       {
         Header: 'Amount',
         accessor: 'Amount',
       },
       {
-        Header: 'Bill',
-        accessor: 'Bill',
+        Header: 'Details',
+        accessor: 'Details',
       },
+   
       {
-        Header: 'Edit',
-        accessor: 'Edit',
+        Header: 'Approval',
+        accessor: 'Approval',
       },
     ],
     []
@@ -96,38 +115,42 @@ const Paymentdetailssummary = () => {
       {
         Name: 'PK',
         Projects: 'TATA',
-        Category: 'Carpentery',
-        Description: 'lorem ipsum',
+        
+        
         Amount: 30000,
-        Bill: 'www.abc.com',
-        Edit :"Edit"
+        Details: "Details",
+        
+        Approval :"Approve"
       },
       {
         Name: 'MK',
         Projects: 'Sanjeeva',
-        Category: 'False ceiling',
-        Description: 'lorem ipsum',
+       
+        
         Amount: 50000,
-        Bill: 'www.abc.com',
-        Edit :"Edit"
+        Details: "Details",
+      
+        Approval :"Approve"
       },
       {
         Name: 'MD',
         Projects: 'Swan Court',
         Category: 'Painting',
-        Description: 'lorem ipsum',
+        
         Amount: 30000,
-        Bill: 'www.xyz.com',
-        Edit :"Edit"
+        Details: "Details",
+       
+       
       },
       {
         Name: 'PK',
         Projects: 'Ideal',
-        Category: 'Plumbing',
-        Description: 'lorem ipsum',
+       
+        
         Amount: 50000,
-        Bill: 'www.567.com',
-        Edit :"Edit"
+        Details: "Details",
+        
+        
       },
     ],
     []
@@ -138,7 +161,7 @@ const Paymentdetailssummary = () => {
     <div className=' h-full w-full flex-col items-center justify-center mb-20 '>
     <Navbar />
     <div className="flex flex-col h-screen w-full items-center justify-center">
-      <h2 className="my-10 text-2xl font-semibold">Payment Request Summary</h2>
+      <h2 className="my-10 text-2xl font-semibold">Payment Approval</h2>
       <div className="w-4/5 h-2/3 my-10 mx-2 flex items-center justify-start overflow-scroll ">
         <Table
         className=" border "
@@ -156,6 +179,6 @@ const Paymentdetailssummary = () => {
   );
 };
 
-export default Paymentdetailssummary;
+export default PaymentApproval;
 
 
